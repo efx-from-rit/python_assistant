@@ -28,10 +28,26 @@ def subtraction():
 
     return difference
 
+def multiplication():
+    starting_number = float(input("Enter your starting number: "))
+
+    while True:
+        try:
+            number = input('Enter a number (press "E" to leave): ')
+            if number == "E" or number == "e":
+                break
+            else:
+                starting_number *= float(number)
+                print("Current value:", starting_number)
+        except ValueError:
+            print("Non-numeric value entered.")
+
+    return starting_number
 
 def main():
     # print(addition())
-    print(subtraction())
+    # print(subtraction())
+    print(multiplication())
 
 if __name__ == "__main__":
     main()
