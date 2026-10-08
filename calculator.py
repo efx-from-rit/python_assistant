@@ -16,10 +16,17 @@ def addition():
 
 # subtraction function:
 def subtraction():
-    difference = input("Enter starting number: ") # enters a starting number for the user to subtract from
+    difference = 0
+
     while True:
         try:
-            difference = float(difference)
+            difference = float(input("Enter starting number: ")) # enters a starting number for the user to subtract from
+            break
+        except ValueError:
+            print("Non-numerical value entered.")
+        
+    while True:
+        try:
             number = input('Enter a number (press "E" to leave): ') # user enters number to be subtracted from starting number (subtrahend)
             if number == "E" or number == "e": # checks if user tried to leave function
                 break # leaves function
@@ -28,7 +35,6 @@ def subtraction():
                 print("Difference =", difference)
         except ValueError:
             print("Non-numerical value entered.")
-
     return difference # returns difference to be accessed by other functions
 
 # multiplication function:
