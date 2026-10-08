@@ -44,10 +44,30 @@ def multiplication():
 
     return starting_number
 
+def division():
+    quotient = 0
+    
+    while True:
+        numerator = input("Enter numerator: ")
+        denominator = input("Enter denominator: ")
+        
+        if numerator == "E" or numerator == "e" or denominator == "E" or denominator == "e":
+            break
+        try:
+            quotient = float(numerator) / float(denominator)
+            print(quotient)
+        except ZeroDivisionError:
+            print("Cannot divide by zero.")
+        except ValueError:
+            print("Non-numeric value entered.")
+
+    return quotient
+
 def main():
     # print(addition())
     # print(subtraction())
-    print(multiplication())
+    # print(multiplication())
+    print(division())
 
 if __name__ == "__main__":
     main()
