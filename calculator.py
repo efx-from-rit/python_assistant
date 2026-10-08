@@ -17,14 +17,12 @@ def addition():
 # subtraction function:
 def subtraction():
     difference = 0
-
     while True:
         try:
             difference = float(input("Enter starting number: ")) # enters a starting number for the user to subtract from
-            break
+            break # leaves loop, enters next infinite while-loop
         except ValueError:
             print("Non-numerical value entered.")
-        
     while True:
         try:
             number = input('Enter a number (press "E" to leave): ') # user enters number to be subtracted from starting number (subtrahend)
@@ -39,7 +37,13 @@ def subtraction():
 
 # multiplication function:
 def multiplication():
-    starting_number = float(input("Enter your starting number: ")) # enters a starting number for the user to multiply from
+    starting_number = 0
+    while True:
+        try:
+            starting_number = float(input("Enter your starting number: ")) # enters a starting number for the user to multiply from
+            break
+        except ValueError:
+            print("Non-numerical value entered.")
     while True: # initiates infinite loop; same case as subtraction function
         try:
             number = input('Enter a number (press "E" to leave): ') # user enters number to be multipled with the starting number (multiplier)
@@ -61,7 +65,7 @@ def division():
         denominator = input("Enter denominator: ") # prompts user to enter denominator
         
         if numerator == "E" or numerator == "e" or denominator == "E" or denominator == "e": # checks if user tried to leave function
-            break # leaves function
+            break # leaves loop
         try:
             quotient = float(numerator) / float(denominator) # calculates quotient
             print("Quotient =", quotient) # prints quotient to terminal
@@ -75,9 +79,9 @@ def division():
 def main():
     # these were all tests
     # print(addition())
-    print(subtraction())
+    # print(subtraction())
     # print(multiplication())
-    # print(division())
+    print(division())
 
 if __name__ == "__main__":
     main()
