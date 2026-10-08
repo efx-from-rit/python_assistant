@@ -8,7 +8,7 @@ def addition():
                 break # leaves function if user types "e" or "E"
             else:
                 sum_of_numbers += float(number) # adds entered number to last sum value
-                print("Current sum:", sum_of_numbers) # shows the user the current sum
+                print("Sum =", sum_of_numbers) # shows the user the current sum
         except ValueError: # printed if user enters non-numeric value
             print("Non-numeric value entered.")
 
@@ -16,17 +16,18 @@ def addition():
 
 # subtraction function:
 def subtraction():
-    difference = float(input("Enter starting number: ")) # enters a starting number for the user to subtract from
-    while True: # initiates infinite loop; same situation as addition function
+    difference = input("Enter starting number: ") # enters a starting number for the user to subtract from
+    while True:
         try:
+            difference = float(difference)
             number = input('Enter a number (press "E" to leave): ') # user enters number to be subtracted from starting number (subtrahend)
             if number == "E" or number == "e": # checks if user tried to leave function
                 break # leaves function
             else:
-                sum_of_numbers -= float(number) # subtracts entered value from starting number
-                print("Current value:", difference)
-        except ValueError: # printed if user enters non-numeric value
-            print("Non-numeric value entered.")
+                difference -= float(number) # subtracts entered value from starting number
+                print("Difference =", difference)
+        except ValueError:
+            print("Non-numerical value entered.")
 
     return difference # returns difference to be accessed by other functions
 
@@ -40,7 +41,7 @@ def multiplication():
                 break # leaves function
             else:
                 starting_number *= float(number) # multiplies the multiplicand (starting number) by the multiplier
-                print("Current value:", starting_number) # displays the current product in terminal
+                print("Product =", starting_number) # displays the current product in terminal
         except ValueError: # printed if user enters non-numeric value
             print("Non-numeric value entered.")
 
@@ -68,9 +69,9 @@ def division():
 def main():
     # these were all tests
     # print(addition())
-    # print(subtraction())
+    print(subtraction())
     # print(multiplication())
-    print(division())
+    # print(division())
 
 if __name__ == "__main__":
     main()
