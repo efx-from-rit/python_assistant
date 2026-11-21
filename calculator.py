@@ -1,87 +1,88 @@
-# addition function:
-def addition():
-    sum_of_numbers = 0 # sum of numbers starts at zero
-    while True: # infinite loop; user keeps entering values until they choose to exit
-        try:
-            number = input('Enter a number (press "E" to leave): ')
-            if number == "E" or number == "e":
-                break # leaves function if user types "e" or "E"
-            else:
-                sum_of_numbers += float(number) # adds entered number to last sum value
-                print("Sum =", sum_of_numbers) # shows the user the current sum
-        except ValueError: # printed if user enters non-numeric value
-            print("Non-numeric value entered.")
-
-    return sum_of_numbers # returns the sum to be accessed by other functions
-
-# subtraction function:
-def subtraction():
-    difference = 0
+""" FILLING NUMBERS LIST """
+def get_numbers():
+    numbers = []
     while True:
-        try:
-            difference = float(input("Enter starting number: ")) # enters a starting number for the user to subtract from
-            break # leaves loop, enters next infinite while-loop
-        except ValueError:
-            print("Non-numerical value entered.")
-    while True:
-        try:
-            number = input('Enter a number (press "E" to leave): ') # user enters number to be subtracted from starting number (subtrahend)
-            if number == "E" or number == "e": # checks if user tried to leave function
-                break # leaves function
-            else:
-                difference -= float(number) # subtracts entered value from starting number
-                print("Difference =", difference)
-        except ValueError:
-            print("Non-numerical value entered.")
-    return difference # returns difference to be accessed by other functions
-
-# multiplication function:
-def multiplication():
-    starting_number = 0
-    while True:
-        try:
-            starting_number = float(input("Enter your starting number: ")) # enters a starting number for the user to multiply from
+        value = input("Enter a number: ").strip()
+        if value.lower() == 'e':
             break
+        try:
+            value = float(value)
+            numbers.append(value)
         except ValueError:
-            print("Non-numerical value entered.")
-    while True: # initiates infinite loop; same case as subtraction function
+            print("Invalid number entered.")
+    return numbers
+
+""" ADDITION """
+def addition(numbers):
+    total = 0 # sum of numbers starts at zero
+    if len(numbers) == 0:
+        return None
+    for value in numbers:
+        total += value
+    return total
+
+""" SUBTRACTION """
+def subtraction(numbers):
+    if len(numbers) == 0:
+        return None
+    diff = numbers[0]
+    for index in range(1, len(numbers)):
+        diff -= numbers[index]
+    return diff
+
+""" MULTIPLICATION """
+def multiplication(numbers):
+    product = 1
+    if len(numbers) == 0:
+        return None
+    for value in numbers:
+        product *= value
+    return product
+
+""" DIVISION """
+def division(numbers):
+    if len(numbers) == 0:
+        return None
+    quotient = numbers[0] # quotient starts at first index
+    for index in range(1, len(numbers)):
         try:
-            number = input('Enter a number (press "E" to leave): ') # user enters number to be multipled with the starting number (multiplier)
-            if number == "E" or number == "e": # checks if user tried to leave function
-                break # leaves function
-            else:
-                starting_number *= float(number) # multiplies the multiplicand (starting number) by the multiplier
-                print("Product =", starting_number) # displays the current product in terminal
-        except ValueError: # printed if user enters non-numeric value
-            print("Non-numeric value entered.")
+            quotient /= numbers[index]
+        except ZeroDivisionError:
+            return None
+    return quotient
 
-    return starting_number # returns product (ignore variable name) to be accessed by other functions
-
-# division function:
-def division():
-    quotient = 0 # quotient starts at zero
-    while True: # initiates infinite loop; same case as multiplication function
-        numerator = input("Enter numerator: ") # prompts user to enter numerator
-        denominator = input("Enter denominator: ") # prompts user to enter denominator
+def calc_menu():
+    while True:
+        """ CALCULATOR MENU """
+        print("===== CALCULATOR =====")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Exit\n")
         
-        if numerator == "E" or numerator == "e" or denominator == "E" or denominator == "e": # checks if user tried to leave function
-            break # leaves loop
-        try:
-            quotient = float(numerator) / float(denominator) # calculates quotient
-            print("Quotient =", quotient) # prints quotient to terminal
-        except ZeroDivisionError: # printed if user tries to divide by zero
-            print("Cannot divide by zero.")
-        except ValueError: # printed if user enters non-numeric value
-            print("Non-numeric value entered.")
-
-    return quotient # returns quotient to be accessed by other functions
-
-def main():
-    # these were all tests
-    # print(addition())
-    # print(subtraction())
-    # print(multiplication())
-    print(division())
+        choice = input("Select an operation: ").strip()
+        if choice == "1":
+            numbers = get_numbers()
+            result = addition(numbers)
+            print("Sum:", result, "\n")
+        elif choice == "2":
+            numbers = get_numbers()
+            result = subtraction(numbers)
+            print("Difference:", result, "\n")
+        elif choice == "3":
+            numbers = get_numbers()
+            result = multiplication(numbers)
+            print("Product:", result, "\n")
+        elif choice == "4":
+            numbers = get_numbers()
+            result = division(numbers)
+            print("Quotient:", result, "\n")
+        elif choice == "5":
+            print("Exiting calculator...")
+            break
+        else:
+            print("Invalid menu selection. Please try again.\n")
 
 if __name__ == "__main__":
-    main()
+    calc_menu()
