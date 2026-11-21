@@ -1,4 +1,6 @@
+""" IMPORTS """
 import sys
+import calculator
 
 def welcome_message():
     # method variables:
@@ -17,14 +19,14 @@ def welcome_message():
     # Welcome Message:
     print("Hello, I am your python assistant! What would you like to do?")
 
-    print(option1, "\n", option2, "\n", option3, "\n", option4, "\n", option5, end = "\t")
+    print(option1, "\n", option2, "\n", option3, "\n", option4, "\n", option5)
 
     # infinite while loop so the user can keep using the program until they decide to quit
     while True:
         user_choice = input("\nEnter your choice here (by number): ")
 
         if user_choice == "1":
-            print(not_available)
+            calculator.calc_menu()
         elif user_choice == "2":
             print(not_available)
         elif user_choice == "3":
