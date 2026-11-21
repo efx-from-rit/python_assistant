@@ -3,7 +3,6 @@ import sys
 import calculator
 import random_generator
 
-
 def welcome_message():
     # method variables:
     option1 = "1. Calculator"
