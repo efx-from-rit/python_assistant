@@ -10,6 +10,12 @@ def feet_converter(meters):
 def meters_converter(feet):
     return feet / 3.28084
 
+def pounds_converter(kilograms):
+    return kilograms * 2.20462
+
+def kilograms_converter(pounds):
+    return pounds / 2.20462
+
 def unit_converter():
     while True:
         print("========== UNIT CONVERTER ==========")
@@ -17,7 +23,9 @@ def unit_converter():
         print("2. Fahrenheit to Celsius")
         print("3. Meters to Feet")
         print("4. Feet to Meters")
-        print("5. Return to main menu")
+        print("5. Kilograms to Pounds")
+        print("6. Pounds to Kilograms")
+        print("7. Return to main menu")
         print("====================================")
         choice = input("Enter your choice: ")
         if choice == "1":
@@ -53,6 +61,22 @@ def unit_converter():
             except ValueError:
                 print("Invalid entry. Must be a numeric value\n")
         elif choice == "5":
+            kilograms = input("Enter kilograms: ")
+            try:
+                kilograms = float(kilograms)
+                result = pounds_converter(kilograms)
+                print(result, "pounds\n")
+            except ValueError:
+                print("Invalid entry. Must be a numeric value\n")
+        elif choice == "6":
+            pounds = input("Enter pounds: ")
+            try:
+                pounds = float(pounds)
+                result = kilograms_converter(pounds)
+                print(result, "kilograms\n")
+            except ValueError:
+                print("Invalid entry. Must be a numeric value\n")
+        elif choice == "7":
             print("Returning to main menu...\n")
             break
         else:
