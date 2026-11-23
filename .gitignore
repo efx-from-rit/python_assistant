@@ -2,6 +2,10 @@
 __pycache__/
 *.py[codz]
 *$py.class
+*.pyc
+
+# macOS system files
+.DS_Store
 
 # Vim swap files
 *.swp
